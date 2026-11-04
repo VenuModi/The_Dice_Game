@@ -20,7 +20,7 @@ public class DiceGame {
 
         //Ask players name
         System.out.print("Enter the name of the player: ");
-        String playerName = scanner.nextLine();
+        String playerName = scanner.next();
 
         //Create a player
         Player player = new Player(playerName);
