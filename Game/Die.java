@@ -1,3 +1,7 @@
+package Game;
+
+import java.util.Random;
+
 public class Die{
 
     private int numberOfSides;
