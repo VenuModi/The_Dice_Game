@@ -32,6 +32,40 @@ public class DiceGame {
 
         //Play game
 
+        for (int i = 1; i <= numberOfRounds; i++) {
+
+            System.out.println("\nRound " + i);
+
+            System.out.print("Guess a number between 1 and " + sides + ": ");
+
+            int guessOfThePlayer = scanner.nextInt();
+
+            player.rollDice();
+
+            int result = player.getDieValue();
+
+            System.out.println("The die rolled: " + result);
+
+            if(guessOfThePlayer == result){
+
+                player.increaseScore();
+
+                System.out.println("Correct guess! You get 1 point for each correct guess.");
+            }else {
+                System.out.println("Wrong guess!! No point scored" + 
+                "\nCurrent score is: " + player.getScore());
+            }
+            
+        }
+
+        System.out.println(numberOfRounds + " rounds are now completed");
+
+        System.out.println("Your final score is: " + player.getScore());
+
+        System.out.println("\n===GAME OVER===");
+
+        scanner.close();
+
         
     }
     
