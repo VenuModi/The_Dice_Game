@@ -40,7 +40,6 @@ public class Player {
     }
 public void increaseScore(){
     score++;
-    System.out.println(score);
-}
 
+}
 }
