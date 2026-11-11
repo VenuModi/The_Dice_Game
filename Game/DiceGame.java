@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DiceGame {
-
+        //Function to allow the user to enter a valid whole-number guess within the given dice range.
         private static int getValidGuess(Scanner scanner, int sides){
 
         int guessOfThePlayer = 0;
@@ -28,7 +28,7 @@ public class DiceGame {
 
     }
 
-    //Play rounds
+    //Function to run the game rounds and updates the score based on the player's guess against the dice rolls.
     private static void playRounds(Player player, Scanner scanner, int numberOfRounds, int sides){
 
         for (int rounds = 1; rounds <= numberOfRounds; rounds++) {
@@ -63,11 +63,11 @@ public class DiceGame {
 
         System.out.println("\n=== WELCOME TO THE DICE GAME ===");
 
-         int numberOfRounds = 0;
+        int numberOfRounds = 0;
 
         int sides = 0;
 
-        //Ask for number of rounds
+        //A while loop which repeatedly asks the uer to enter a valid and correct input and handles the invalid input using try-catch
         while (numberOfRounds <= 0){
 
             try {
@@ -83,7 +83,7 @@ public class DiceGame {
             }
         }
 
-        //Ask for number of sides
+        //Ask for number of sides : //A while loop which repeatedly asks the uer to valid input and handles the invalid input using try-catch
         while (sides < 2){
 
             try {
@@ -107,11 +107,13 @@ public class DiceGame {
 
         //Create the player
         Player player = new Player(playerName);
+
+        //Assigns a die to the player with the specified number of sides
         player.addDie(sides);
 
         System.out.println("\nWelcome " + player.getPlayerName() + "!");
 
-        //Play the game
+        //Play the game by passing , playername, scanner , numberOfRounds and sides as arguments to the playRounds function
         playRounds(player, scanner, numberOfRounds, sides);
 
 
