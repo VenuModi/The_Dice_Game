@@ -36,8 +36,7 @@ public class Player {
     public void addDie(int numberOfSides)
     {
             dice.add(new Die(numberOfSides));
-            System.out.println("\nWelcome " + getPlayerName() + "!");
-            //
+            
     }
 
     // Rolls the player's die.
