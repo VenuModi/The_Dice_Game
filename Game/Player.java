@@ -1,15 +1,18 @@
 package Game;
 
+import java.util.ArrayList;
+
 public class Player {
     private String playerName;
     private int score;
-    private Die die;
+    private final ArrayList<Die> dice;
     
     
     Player(String playerName)
     {
         this.playerName = playerName;
         this.score =0;
+        this.dice = new ArrayList<>();
     }
 
     // Returns the player's current score.
@@ -32,19 +35,29 @@ public class Player {
     // Creates a die with the specified number of sides and assigns it to the player.
     public void addDie(int numberOfSides)
     {
-        die = new Die(numberOfSides);
-        System.out.println("\nWelcome " + getPlayerName() + "!");
-        System.out.println("\n" + getPlayerName() + " You have chosen " + die.getNumberOfSides() + " sided die");
+        for (Die die : dice) {
+            dice.add(new Die(numberOfSides));
+            System.out.println("\nWelcome " + getPlayerName() + "!");
+            System.out.println("\n" + getPlayerName() + " You have chosen " + die.getNumberOfSides() + " sided die");
+        }
+        
     }
 
     // Rolls the player's die.
     public void rollDice(){
-        die.roll();
+        for (Die die: dice) 
+        {
+            die.roll();
+        }
     }
     
     // Returns the current value of the player's die.
     public int getDieValue(){
-        return die.getCurrentValue();
+        return dice.get(0).getCurrentValue();
+    }
+
+    public ArrayList<Die> getDice(){
+        return dice;
     }
 
     // Increases the player's score by one point.
