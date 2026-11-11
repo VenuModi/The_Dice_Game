@@ -35,12 +35,9 @@ public class Player {
     // Creates a die with the specified number of sides and assigns it to the player.
     public void addDie(int numberOfSides)
     {
-        for (Die die : dice) {
             dice.add(new Die(numberOfSides));
             System.out.println("\nWelcome " + getPlayerName() + "!");
-            System.out.println("\n" + getPlayerName() + " You have chosen " + die.getNumberOfSides() + " sided die");
-        }
-        
+            //
     }
 
     // Rolls the player's die.

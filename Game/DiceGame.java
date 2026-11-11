@@ -52,8 +52,9 @@ public class DiceGame {
         //Create the player
         Player player = new Player(playerName);
         player.addDie(sides);
-
+        System.out.println("\n" + player.getPlayerName() + " You have chosen " + player.getDice().get(0).getNumberOfSides() + " sided die");
         System.out.println("\nWelcome " + player.getPlayerName() + "!");
+
 
         //Play the game
         playRounds(player, scanner, numberOfRounds, sides);
