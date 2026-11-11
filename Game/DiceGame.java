@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DiceGame {
-            public static void startGame(Scanner scanner) {
+    public static void startGame(Scanner scanner) {
 
         System.out.println("\n===== SINGLE PLAYER DICE GAME =====");
 
@@ -66,7 +66,7 @@ public class DiceGame {
 
     }
 
-    private static int getValidGuess(Scanner scanner, int sides){
+    private static int getValidGuess(Scanner scanner, int sides) {
 
         int guessOfThePlayer = 0;
 
@@ -90,7 +90,7 @@ public class DiceGame {
     }
 
     //Play rounds
-    private static void playRounds(Player player, Scanner scanner, int numberOfRounds, int sides){
+    private static void playRounds(Player player, Scanner scanner, int numberOfRounds, int sides) {
 
         for (int rounds = 1; rounds <= numberOfRounds; rounds++) {
 
@@ -108,7 +108,7 @@ public class DiceGame {
 
                 player.increaseScore();
                 System.out.println("Correct guess!! +1 point.");
-            }else {
+            } else {
                 System.out.println("Wrong guess! No points.");
             }
 
@@ -118,6 +118,5 @@ public class DiceGame {
             scanner.nextLine();
 
         }
-
     }
 }
