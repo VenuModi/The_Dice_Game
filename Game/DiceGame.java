@@ -97,6 +97,7 @@ public class DiceGame {
                 System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
+            
         }
 
         scanner.nextLine();
@@ -110,8 +111,6 @@ public class DiceGame {
 
         //Assigns a die to the player with the specified number of sides
         player.addDie(sides);
-
-        System.out.println("\nWelcome " + player.getPlayerName() + "!");
 
         //Play the game by passing , playername, scanner , numberOfRounds and sides as arguments to the playRounds function
         playRounds(player, scanner, numberOfRounds, sides);

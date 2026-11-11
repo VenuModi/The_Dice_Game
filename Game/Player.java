@@ -3,7 +3,7 @@ package Game;
 public class Player {
     private String playerName;
     private int score;
-    private Die dice;
+    private Die die;
     
     
     Player(String playerName)
@@ -32,17 +32,19 @@ public class Player {
     // Creates a die with the specified number of sides and assigns it to the player.
     public void addDie(int numberOfSides)
     {
-        dice = new Die(numberOfSides);
+        die = new Die(numberOfSides);
+        System.out.println("\nWelcome " + getPlayerName() + "!");
+        System.out.println("\n" + getPlayerName() + " You have chosen " + die.getNumberOfSides() + " sided die");
     }
 
     // Rolls the player's die.
     public void rollDice(){
-        dice.roll();
+        die.roll();
     }
     
     // Returns the current value of the player's die.
     public int getDieValue(){
-        return dice.getCurrentValue();
+        return die.getCurrentValue();
     }
 
     // Increases the player's score by one point.
