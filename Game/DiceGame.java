@@ -117,14 +117,6 @@ public class DiceGame {
             //Clear Enter left by nextLine()
             scanner.nextLine();
 
-            //Pause between rounds
-            //if (rounds < numberOfRounds){
-
-                //System.out.println("\nPress Enter to continue to the next round...");
-
-                //scanner.nextLine();
-            //}
-
         }
 
     }

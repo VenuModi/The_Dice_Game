@@ -1,7 +1,7 @@
 package Game;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 
 public class MultiPlayerGame{
@@ -51,7 +51,7 @@ public class MultiPlayerGame{
             
         }  
     }
-//Find the winner or winners
+        //Find the winner or winners
         ArrayList<Player> winners = getWinners(players);
 
         System.out.println("\n====== GAME OVER ======");
@@ -161,7 +161,7 @@ public class MultiPlayerGame{
                 roundTotal += value;
 
                 if (!diceResults.isEmpty()){
-                    diceResults += ", ";//Add commas between dice values without adding a comma before the first value.
+                    diceResults += ", ";        //Add commas between dice values without adding a comma before the first value.
                 }
                 diceResults += value;
             }
