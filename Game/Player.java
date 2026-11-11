@@ -50,7 +50,7 @@ public class Player {
     // Increases the player's score by one point.
 
     public void increaseScore(){
-        score++;
+        setScore(score+1);
 
     }
 }
