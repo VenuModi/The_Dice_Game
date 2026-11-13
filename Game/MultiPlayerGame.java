@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class MultiPlayerGame{
 
-    private  static Scanner scanner = new Scanner(System.in);
  public static void startGame(Scanner scanner){
 
     System.out.println(" ==== MULTIPLAYER DICE GAME ====");
@@ -45,9 +44,10 @@ public class MultiPlayerGame{
         //Pause between rounds
         if (round < numberOfRounds) {
 
-            System.out.println("\nPress Enter to continue to the next round...");
+            System.out.println("\nPress Enter to continue to the " + (round + 1) + " round..");
 
             scanner.nextLine();
+        
             
         }  
     }
@@ -190,6 +190,12 @@ public class MultiPlayerGame{
 
                 winners.clear();
                 winners.add(player);
+
+            } else if (player.getScore() == highScore){
+                 
+                    winners.add(player);
+                
+
             }
         }
         return winners;
