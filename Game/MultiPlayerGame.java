@@ -1,75 +1,74 @@
 package Game;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+public class MultiPlayerGame {
 
-public class MultiPlayerGame{
+    public static void startGame(Scanner scanner) {
 
- public static void startGame(Scanner scanner){
+        System.out.println(" ==== MULTIPLAYER DICE GAME ====");
 
-    System.out.println(" ==== MULTIPLAYER DICE GAME ====");
+        //Create players and give them dice
+        ArrayList<Player> players = initialize(scanner);
 
-    //Create players and give them dice
-    ArrayList<Player> players = initialize(scanner);
+        //Ask for number of rounds
+        int numberOfRounds = 0;
 
-    //Ask for number of rounds
-    int numberOfRounds = 0;
+        while (numberOfRounds <= 0) {
 
-    while (numberOfRounds <= 0) {
+            try {
+                System.out.println("How many rounds? ");
+                numberOfRounds = scanner.nextInt();
 
-        try{
-            System.out.println("How many rounds? ");
-            numberOfRounds = scanner.nextInt();
+                if (numberOfRounds <= 0) {
+                    System.out.println("Rounds must be greater than 0.");
 
-            if (numberOfRounds <= 0) {
-                System.out.println("Rounds must be greater than 0.");
-                
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR! Please enter a whole number.");
+                scanner.nextLine();
             }
-        }catch (InputMismatchException e){
-            System.out.println("ERROR! Please enter a whole number.");
-            scanner.nextLine();
-        } 
-    }
+        }
 
-    // Clear the leftover Enter from number of rounds
-    scanner.nextLine();
+        // Clear the leftover Enter from number of rounds
+        scanner.nextLine();
 
-    for (int round = 1; round <= numberOfRounds; round++) {
+        for (int round = 1; round <= numberOfRounds; round++) {
 
-        System.out.println("\n--------- Round - " + round + " ---------");
-        
-        takeTurn(players);
+            System.out.println("\n--------- Round - " + round + " ---------");
 
-        //Pause between rounds
-        if (round < numberOfRounds) {
+            takeTurn(players);
 
-            System.out.println("\nPress Enter to continue to the " + (round + 1) + " round..");
+            //Pause between rounds
+            if (round < numberOfRounds) {
 
-            scanner.nextLine();
-        
-            
-        }  
-    }
+                System.out.println("\nPress Enter to continue to the " + (round + 1) + " round..");
+
+                scanner.nextLine();
+
+            }
+        }
         //Find the winner or winners
         ArrayList<Player> winners = getWinners(players);
 
         System.out.println("\n====== GAME OVER ======");
 
         //Show final scores
-        for (Player player : players){
+        for (Player player : players) {
             System.out.println(player.getPlayerName() + " " + player.getScore() + " points");
         }
         System.out.println("\nWinner(s): ");
 
-        for (Player winner : winners){
-            System.out.println(winner.getPlayerName() +
-                    " with " + winner.getScore() + " points!");
+        for (Player winner : winners) {
+            System.out.println(winner.getPlayerName()
+                    + " with " + winner.getScore() + " points!");
         }
     }
 
     //Create players and dice
-    private static ArrayList<Player> initialize(Scanner scanner){
+    private static ArrayList<Player> initialize(Scanner scanner) {
 
         ArrayList<Player> players = new ArrayList<>();
 
@@ -77,32 +76,32 @@ public class MultiPlayerGame{
         int numberOfDice = 0;
 
         //Ask for number of players
-        while (numberOfPlayers < 2){
+        while (numberOfPlayers < 2) {
 
             try {
                 System.out.println("How many players? ");
                 numberOfPlayers = scanner.nextInt();
 
-                if (numberOfPlayers < 2){
+                if (numberOfPlayers < 2) {
                     System.out.println("You need atleast 2 players.");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
         }
 
         //Ask for number of dice per player
-        while (numberOfDice <= 0){
+        while (numberOfDice <= 0) {
 
-            try{
+            try {
                 System.out.println("How many dice per player? ");
                 numberOfDice = scanner.nextInt();
 
-                if (numberOfDice <= 0){
+                if (numberOfDice <= 0) {
                     System.out.println("Each player needs atleast 1 die.");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
@@ -116,19 +115,19 @@ public class MultiPlayerGame{
 
             String name = "";
 
-            while (name.isBlank()){
+            while (name.isBlank()) {
 
                 System.out.println("Enter player " + i + " name");
                 name = scanner.nextLine();
 
-                if (name.isBlank()){
+                if (name.isBlank()) {
                     System.out.println("Name cannot be empty!!");
                 }
             }
             Player player = new Player(name);
 
             //Give dice to each player
-            for (int j = 1; j <= numberOfDice ; j++) {
+            for (int j = 1; j <= numberOfDice; j++) {
                 player.addDie(6);
 
             }
@@ -139,28 +138,26 @@ public class MultiPlayerGame{
     }
 
     //Every player rolls their dice
-    private static void takeTurn(ArrayList<Player> players){
+    private static void takeTurn(ArrayList<Player> players) {
 
+        System.out.printf("%-12s %-15s %-10s %-10s%n",
+                "Player", "Dice Rolls", "Round", "Total");
 
-
-            System.out.printf("%-12s %-15s %-10s %-10s%n",
-                    "Player", "Dice Rolls", "Round", "Total");
-
-            System.out.println("---------------------------------------------------------------------");
-        for (Player player : players){
+        System.out.println("---------------------------------------------------------------------");
+        for (Player player : players) {
 
             player.rollDice();
 
             int roundTotal = 0;
             String diceResults = "";
 
-            for (Die die : player.getDice()){
+            for (Die die : player.getDice()) {
 
                 int value = die.getCurrentValue();
 
                 roundTotal += value;
 
-                if (!diceResults.isEmpty()){
+                if (!diceResults.isEmpty()) {
                     diceResults += ", ";        //Add commas between dice values without adding a comma before the first value.
                 }
                 diceResults += value;
@@ -176,25 +173,24 @@ public class MultiPlayerGame{
     }
 
     //Find the winner/winners
-    private  static ArrayList<Player> getWinners(ArrayList<Player> players){
+    private static ArrayList<Player> getWinners(ArrayList<Player> players) {
 
         ArrayList<Player> winners = new ArrayList<>();
 
-        int highScore = -1;
+        int highScore = 0;
 
-        for (Player player : players){
+        for (Player player : players) {
 
-            if (player.getScore() > highScore){
+            if (player.getScore() > highScore) {
 
                 highScore = player.getScore();
 
                 winners.clear();
                 winners.add(player);
 
-            } else if (player.getScore() == highScore){
-                 
-                    winners.add(player);
-                
+            } else if (player.getScore() == highScore) {
+
+                winners.add(player);
 
             }
         }
