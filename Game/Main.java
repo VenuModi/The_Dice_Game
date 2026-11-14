@@ -1,14 +1,16 @@
 package Game;
+
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
 
         String choice = "";// Makes menu error handling simple. Dont need try/catch
 
-        while (!choice.equals("3")){
+        while (!choice.equals("3")) {
 
             System.out.println("\n===== WELCOME TO DICE GAME =====");
             System.out.println("1. Single player");
@@ -18,7 +20,7 @@ public class Main {
             System.out.println("Choose a game mode: ");
             choice = scanner.nextLine();
 
-            switch (choice){
+            switch (choice) {
 
                 case "1":
                     DiceGame.startGame(scanner);

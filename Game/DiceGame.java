@@ -1,9 +1,10 @@
-
 package Game;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DiceGame {
+
     public static void startGame(Scanner scanner) {
 
         System.out.println("\n===== SINGLE PLAYER DICE GAME =====");
@@ -12,31 +13,31 @@ public class DiceGame {
         int sides = 0;
 
         //Ask for number of rounds
-        while (numberOfRounds <= 0){
+        while (numberOfRounds <= 0) {
 
             try {
                 System.out.println("How many rounds do you want to play?");
                 numberOfRounds = scanner.nextInt();
 
-                if (numberOfRounds <= 0){
+                if (numberOfRounds <= 0) {
                     System.out.println("Rounds must be greater than 0.");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
         }
         //Ask for number of sides
-        while (sides < 2){
+        while (sides < 2) {
 
             try {
                 System.out.println("How many sides should the die have?");
                 sides = scanner.nextInt();
 
-                if (sides < 2){
+                if (sides < 2) {
                     System.out.println("A die must at least have 2 sides.");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("ERROR!! Please enter a whole number.");
                 scanner.nextLine();
             }
@@ -55,10 +56,8 @@ public class DiceGame {
         System.out.println("\n" + player.getPlayerName() + " You have chosen " + player.getDice().get(0).getNumberOfSides() + " sided die");
         System.out.println("\nWelcome " + player.getPlayerName() + "!");
 
-
         //Play the game
         playRounds(player, scanner, numberOfRounds, sides);
-
 
         System.out.println("\n===== GAME OVER =====");
         System.out.println("Player: " + player.getPlayerName());
@@ -73,14 +72,14 @@ public class DiceGame {
         //Ask for a valid guess
         while (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
 
-            try{
+            try {
                 System.out.println("Guess a number between 1 and " + sides + ": ");
                 guessOfThePlayer = scanner.nextInt();
 
                 if (guessOfThePlayer < 1 || guessOfThePlayer > sides) {
                     System.out.println("Your guess is outside the range!");
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("ERROR! Please enter a whole number.");
                 scanner.nextLine();
             }
@@ -104,7 +103,7 @@ public class DiceGame {
 
             System.out.println("The die rolled: " + result);
 
-            if (guessOfThePlayer == result){
+            if (guessOfThePlayer == result) {
 
                 player.increaseScore();
                 System.out.println("Correct guess!! +1 point.");
